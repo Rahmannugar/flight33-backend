@@ -2,11 +2,18 @@ import express from "express";
 import "dotenv/config"
 import { connectRedis, redisClient } from "./lib/redis.js";
 import { errorHandler } from "./middleware/error-handler.js";
+import { flightsRouter } from "./routes/flights.route.js";
+import { priceTrendsRouter } from "./routes/price-trends.route.js";
+
+
 
 const app = express();
 const port = Number(process.env.PORT) || 4000;
 
 app.use(express.json());
+app.use("/api/flights", flightsRouter);
+app.use("/api/flights/price-trends", priceTrendsRouter);
+app.use(errorHandler);
 
 app.get("/health", (_req, res) => {
    const redisStatus = redisClient.isOpen ? "connected" : "disconnected";
@@ -17,8 +24,6 @@ app.get("/health", (_req, res) => {
     redis: redisStatus
   });
 });
-
-app.use(errorHandler);
 
 async function start() {
   await connectRedis();
