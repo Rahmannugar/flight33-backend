@@ -3,14 +3,12 @@ import swaggerJSDoc from "swagger-jsdoc";
 export const swaggerSpec = swaggerJSDoc({
   definition: {
     openapi: "3.0.3",
-
     info: {
       title: "Flight33 API",
       version: "1.0.0",
       description:
         "Flight33 backend API for flight search and price trend aggregation."
     },
-
     servers: [
       {
         url: "https://flight33-backend.onrender.com",
@@ -22,5 +20,5 @@ export const swaggerSpec = swaggerJSDoc({
       }
     ]
   },
-  apis: ["./src/routes/**/*.ts"]
+  apis: ["./src/routes/**/*.ts", "./src/docs/**/*.ts"]
 });
