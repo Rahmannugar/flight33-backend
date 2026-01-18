@@ -4,6 +4,22 @@ import { ValidationError } from "../lib/errors.js";
 
 export const priceTrendsRouter = Router();
 
+/**
+ * @openapi
+ * /api/flights/price-trends:
+ *   get:
+ *     summary: Get price trends
+ *     parameters:
+ *       - name: searchId
+ *         in: query
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Price trend buckets
+ */
+
 priceTrendsRouter.get("/", async (req, res) => {
   const searchId = req.query.searchId;
 

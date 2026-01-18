@@ -4,8 +4,8 @@ import { connectRedis, redisClient } from "./lib/redis-client.js";
 import { errorHandler } from "./middleware/error-handler.js";
 import { flightsRouter } from "./routes/flights.route.js";
 import { priceTrendsRouter } from "./routes/price-trends.route.js";
-
-
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "./lib/swagger.js";
 
 const app = express();
 const port = Number(process.env.PORT) || 4000;
@@ -13,6 +13,7 @@ const port = Number(process.env.PORT) || 4000;
 app.use(express.json());
 app.use("/api/flights", flightsRouter);
 app.use("/api/flights/price-trends", priceTrendsRouter);
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(errorHandler);
 
 app.get("/health", (_req, res) => {
