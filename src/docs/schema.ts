@@ -67,4 +67,4 @@
  *           required: [code, message]
  *       required: [error]
  */
-export {};
+export const schemas = {};

@@ -1,5 +1,9 @@
 import swaggerJSDoc from "swagger-jsdoc";
 
+const isProduction = process.env.NODE_ENV === "production";
+const sourceDir = isProduction ? "./dist" : "./src";
+const fileExt = isProduction ? "js" : "ts";
+
 export const swaggerSpec = swaggerJSDoc({
   definition: {
     openapi: "3.0.3",
@@ -20,5 +24,5 @@ export const swaggerSpec = swaggerJSDoc({
       }
     ]
   },
-  apis: ["./src/routes/**/*.ts", "./src/docs/**/*.ts"]
+  apis: [`${sourceDir}/routes/**/*.${fileExt}`, `${sourceDir}/docs/**/*.${fileExt}`]
 });
