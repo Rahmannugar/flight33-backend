@@ -1,4 +1,4 @@
-import { redisClient } from "../lib/redis.js";
+import { redisClient } from "../lib/redis-client.js";
 
 type CacheSetOptions = {
   ttlSeconds: number;

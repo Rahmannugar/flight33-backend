@@ -1,6 +1,6 @@
 import express from "express";
 import "dotenv/config"
-import { connectRedis, redisClient } from "./lib/redis.js";
+import { connectRedis, redisClient } from "./lib/redis-client.js";
 import { errorHandler } from "./middleware/error-handler.js";
 import { flightsRouter } from "./routes/flights.route.js";
 import { priceTrendsRouter } from "./routes/price-trends.route.js";
