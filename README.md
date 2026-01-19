@@ -1,7 +1,7 @@
 # Flight33 Backend
 
 Flight33 is a flight search engine designed to bring transparency to air travel costs.
-This backend aggregates live availability from Amadeus and transforms raw data into **price trends**—giving users historical context, not just current prices.
+This backend aggregates live availability from Amadeus and transforms raw data into **price trends**, giving users historical context, not just current prices.
 
 It allows us to serve rich, real-time visual data without hammering the external API, thanks to a heavy focus on deterministic caching.
 
@@ -22,7 +22,7 @@ It allows us to serve rich, real-time visual data without hammering the external
 
 ## Architecture
 
-We designed the system to be **modular and testable**. We strictly separate "how data is retrieved" from "how business rules are applied."
+The system follows a **layered architecture** with strict separation between HTTP handling, business logic, and external integrations. This keeps concerns isolated and makes the codebase easy to test and extend.
 
 ```text
 src/
@@ -53,3 +53,9 @@ src/
    pnpm install
    pnpm dev
    ```
+
+4. **Deploy to Render**
+   - Push to a GitHub repo connected to Render
+   - Create a new **Web Service** with Docker runtime
+   - Add a **Redis** instance and link it via `REDIS_URL`
+   - Set environment variables: `AMADEUS_API_KEY`, `AMADEUS_API_SECRET`, `REDIS_URL`, `NODE_ENV=production`
