@@ -20,7 +20,7 @@ export const priceTrendsRouter = Router();
  *         description: Price trend buckets
  */
 
-priceTrendsRouter.get("/", async (req, res) => {
+priceTrendsRouter.get("/price-trends", async (req, res) => {
   const searchId = req.query.searchId;
 
   if (typeof searchId !== "string" || !searchId) {

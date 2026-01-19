@@ -14,7 +14,7 @@ const port = Number(process.env.PORT) || 4000;
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://flight33.vercel.app",
+  "https://flyt33.vercel.app",
 ];
 
 app.use(
@@ -27,7 +27,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api/flights", flightsRouter);
-app.use("/api/flights/price-trends", priceTrendsRouter);
+app.use("/api/flights", priceTrendsRouter);
 app.use("/api/locations", locationsRouter);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 

@@ -37,7 +37,7 @@ export const locationsRouter = Router();
  *                       countryName:
  *                         type: string
  * */
-locationsRouter.get("/search", async (req, res) => {
+locationsRouter.get("/", async (req, res) => {
   const keyword = req.query.keyword;
 
   if (typeof keyword !== "string" || keyword.length < 2) {
