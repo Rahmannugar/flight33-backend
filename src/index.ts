@@ -5,6 +5,7 @@ import { connectRedis, redisClient } from "./lib/redis-client.js";
 import { errorHandler } from "./middleware/error-handler.js";
 import { flightsRouter } from "./routes/flights.route.js";
 import { priceTrendsRouter } from "./routes/price-trends.route.js";
+import { locationsRouter } from "./routes/locations.route.js";
 import swaggerUi from "swagger-ui-express";
 import { swaggerSpec } from "./lib/swagger.js";
 
@@ -27,6 +28,7 @@ app.use(express.json());
 
 app.use("/api/flights", flightsRouter);
 app.use("/api/flights/price-trends", priceTrendsRouter);
+app.use("/api/locations", locationsRouter);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get("/health", (_req, res) => {
