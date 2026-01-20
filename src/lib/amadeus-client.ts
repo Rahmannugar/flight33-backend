@@ -67,6 +67,8 @@ export async function amadeusGet<T>(
       throw new RateLimitedError("Amadeus rate limit exceeded");
     }
 
-    throw new UpstreamError("Amadeus request failed");
+    const details = err.response?.data?.errors || err.response?.data || err.message;
+    console.error("Amadeus API Error:", JSON.stringify(details, null, 2));
+    throw new UpstreamError("Amadeus request failed", details);
   }
 }

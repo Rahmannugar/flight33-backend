@@ -38,8 +38,9 @@ export class NotFoundError extends AppError {
 }
 
 export class UpstreamError extends AppError {
-  constructor(message = "Upstream service failed") {
+  constructor(message = "Upstream service failed", details?: unknown) {
     super(message, "UPSTREAM_ERROR", 502);
+    (this as any).details = details ?? null;
   }
 }
 
