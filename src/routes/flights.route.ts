@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { z } from "zod";
 import { flightSearchSchema } from "../schemas/flight-search.schema.js";
 import { searchFlights } from "../services/flight-search.service.js";
 import { ValidationError } from "../lib/errors.js";
@@ -65,7 +66,7 @@ flightsRouter.post("/search", async (req, res) => {
   if (!parsed.success) {
     throw new ValidationError(
       "Invalid flight search input",
-      parsed.error.flatten()
+      z.flattenError(parsed.error)
     );
   }
 
